@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>bitirilen eğitim düzeyine gore nufusun dağılımı(25+yas)</title>
+
+  <link href="./assets/styles.css" rel="stylesheet" />
+
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20171210/classList.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/findindex_polyfill_mdn"></script>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+    integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+
+  <script>
+
+
+    var data = [{ "yil": 2008, "cinsiyet": "Erkek", "toplam": 100.00, "okuma_yazma_bilmeyen": 4.50, "okuma_yazma_bilen_mevzuniyeti_olmayan": 4.90, "ilk_okul": 42.80, "ilkogretim": 1.00, "ortaokul": 9.00, "lise": 18.80, "yuksekokul_ve_fakulte": 10.20, "yuksek_lisans": 0.80, "doktora": 0.20, "bilinmeyen": 7.70 },
+    { "yil": 2009, "cinsiyet": "Erkek", "toplam": 100.00, "okuma_yazma_bilmeyen": 4.20, "okuma_yazma_bilen_mevzuniyeti_olmayan": 4.50, "ilk_okul": 43.10, "ilkogretim": 1.70, "ortaokul": 8.80, "lise": 19.60, "yuksekokul_ve_fakulte": 11.20, "yuksek_lisans": 0.80, "doktora": 0.30, "bilinmeyen": 5.80 },
+    { "yil": 2010, "cinsiyet": "Erkek", "toplam": 100.00, "okuma_yazma_bilmeyen": 3.10, "okuma_yazma_bilen_mevzuniyeti_olmayan": 3.90, "ilk_okul": 33.10, "ilkogretim": 10.60, "ortaokul": 9.30, "lise": 21.30, "yuksekokul_ve_fakulte": 11.90, "yuksek_lisans": 1.00, "doktora": 0.30, "bilinmeyen": 5.40 },
+    { "yil": 2011, "cinsiyet": "Erkek", "toplam": 100.00, "okuma_yazma_bilmeyen": 2.40, "okuma_yazma_bilen_mevzuniyeti_olmayan": 3.80, "ilk_okul": 31.30, "ilkogretim": 13.20, "ortaokul": 8.20, "lise": 22.20, "yuksekokul_ve_fakulte": 13.40, "yuksek_lisans": 1.10, "doktora": 0.40, "bilinmeyen": 4.10 },
+    { "yil": 2012, "cinsiyet": "Erkek", "toplam": 100.00, "okuma_yazma_bilmeyen": 2.10, "okuma_yazma_bilen_mevzuniyeti_olmayan": 4.00, "ilk_okul": 30.40, "ilkogretim": 13.90, "ortaokul": 8.00, "lise": 22.70, "yuksekokul_ve_fakulte": 14.00, "yuksek_lisans": 1.10, "doktora": 0.30, "bilinmeyen": 3.60 },
+    { "yil": 2013, "cinsiyet": "Erkek", "toplam": 100.00, "okuma_yazma_bilmeyen": 1.90, "okuma_yazma_bilen_mevzuniyeti_olmayan": 3.90, "ilk_okul": 29.10, "ilkogretim": 14.60, "ortaokul": 7.80, "lise": 22.20, "yuksekokul_ve_fakulte": 15.10, "yuksek_lisans": 1.40, "doktora": 0.40, "bilinmeyen": 3.60 },
+    { "yil": 2014, "cinsiyet": "Erkek", "toplam": 100.00, "okuma_yazma_bilmeyen": 1.80, "okuma_yazma_bilen_mevzuniyeti_olmayan": 3.70, "ilk_okul": 27.90, "ilkogretim": 14.00, "ortaokul": 9.40, "lise": 23.20, "yuksekokul_ve_fakulte": 16.20, "yuksek_lisans": 1.50, "doktora": 0.40, "bilinmeyen": 1.80 },
+    { "yil": 2015, "cinsiyet": "Erkek", "toplam": 100.00, "okuma_yazma_bilmeyen": 1.80, "okuma_yazma_bilen_mevzuniyeti_olmayan": 3.50, "ilk_okul": 27.20, "ilkogretim": 13.60, "ortaokul": 9.50, "lise": 23.50, "yuksekokul_ve_fakulte": 17.90, "yuksek_lisans": 1.60, "doktora": 0.40, "bilinmeyen": 1.10 },
+    { "yil": 2016, "cinsiyet": "Erkek", "toplam": 100.00, "okuma_yazma_bilmeyen": 1.60, "okuma_yazma_bilen_mevzuniyeti_olmayan": 3.20, "ilk_okul": 24.90, "ilkogretim": 14.90, "ortaokul": 10.20, "lise": 23.40, "yuksekokul_ve_fakulte": 18.70, "yuksek_lisans": 1.70, "doktora": 0.40, "bilinmeyen": 0.90 },
+    { "yil": 2017, "cinsiyet": "Erkek", "toplam": 100.00, "okuma_yazma_bilmeyen": 1.50, "okuma_yazma_bilen_mevzuniyeti_olmayan": 3.00, "ilk_okul": 23.90, "ilkogretim": 15.70, "ortaokul": 9.90, "lise": 23.70, "yuksekokul_ve_fakulte": 18.90, "yuksek_lisans": 2.10, "doktora": 0.50, "bilinmeyen": 0.90 },
+    { "yil": 2018, "cinsiyet": "Erkek", "toplam": 100.00, "okuma_yazma_bilmeyen": 1.30, "okuma_yazma_bilen_mevzuniyeti_olmayan": 2.70, "ilk_okul": 21.80, "ilkogretim": 16.50, "ortaokul": 10.20, "lise": 24.40, "yuksekokul_ve_fakulte": 19.40, "yuksek_lisans": 2.30, "doktora": 0.50, "bilinmeyen": 0.90 },
+    { "yil": 2019, "cinsiyet": "Erkek", "toplam": 100.00, "okuma_yazma_bilmeyen": 1.10, "okuma_yazma_bilen_mevzuniyeti_olmayan": 2.40, "ilk_okul": 20.30, "ilkogretim": 13.00, "ortaokul": 14.20, "lise": 25.20, "yuksekokul_ve_fakulte": 19.90, "yuksek_lisans": 2.40, "doktora": 0.50, "bilinmeyen": 1.00 },
+    { "yil": 2020, "cinsiyet": "Erkek", "toplam": 100.00, "okuma_yazma_bilmeyen": 1.00, "okuma_yazma_bilen_mevzuniyeti_olmayan": 2.20, "ilk_okul": 19.40, "ilkogretim": 12.40, "ortaokul": 14.80, "lise": 25.40, "yuksekokul_ve_fakulte": 20.80, "yuksek_lisans": 2.50, "doktora": 0.50, "bilinmeyen": 1.00 },
+    { "yil": 2021, "cinsiyet": "Erkek", "toplam": 100.00, "okuma_yazma_bilmeyen": 0.90, "okuma_yazma_bilen_mevzuniyeti_olmayan": 1.90, "ilk_okul": 18.60, "ilkogretim": 11.40, "ortaokul": 14.70, "lise": 26.50, "yuksekokul_ve_fakulte": 21.30, "yuksek_lisans": 2.90, "doktora": 0.50, "bilinmeyen": 1.20 },
+    { "yil": 2022, "cinsiyet": "Erkek", "toplam": 100.00, "okuma_yazma_bilmeyen": 0.90, "okuma_yazma_bilen_mevzuniyeti_olmayan": 1.80, "ilk_okul": 17.90, "ilkogretim": 11.00, "ortaokul": 14.60, "lise": 27.10, "yuksekokul_ve_fakulte": 21.90, "yuksek_lisans": 3.00, "doktora": 0.50, "bilinmeyen": 1.20 },
+    { "yil": 2008, "cinsiyet": "Kadın", "toplam": 100.00, "okuma_yazma_bilmeyen": 18.00, "okuma_yazma_bilen_mevzuniyeti_olmayan": 7.40, "ilk_okul": 42.70, "ilkogretim": 0.70, "ortaokul": 4.90, "lise": 12.20, "yuksekokul_ve_fakulte": 6.50, "yuksek_lisans": 0.50, "doktora": 0.10, "bilinmeyen": 7.00 },
+    { "yil": 2009, "cinsiyet": "Kadın", "toplam": 100.00, "okuma_yazma_bilmeyen": 17.10, "okuma_yazma_bilen_mevzuniyeti_olmayan": 6.90, "ilk_okul": 44.30, "ilkogretim": 1.20, "ortaokul": 4.90, "lise": 12.60, "yuksekokul_ve_fakulte": 7.30, "yuksek_lisans": 0.50, "doktora": 0.20, "bilinmeyen": 5.10 },
+    { "yil": 2010, "cinsiyet": "Kadın", "toplam": 100.00, "okuma_yazma_bilmeyen": 13.90, "okuma_yazma_bilen_mevzuniyeti_olmayan": 7.10, "ilk_okul": 40.10, "ilkogretim": 6.10, "ortaokul": 5.50, "lise": 13.80, "yuksekokul_ve_fakulte": 7.70, "yuksek_lisans": 0.70, "doktora": 0.20, "bilinmeyen": 4.90 },
+    { "yil": 2011, "cinsiyet": "Kadın", "toplam": 100.00, "okuma_yazma_bilmeyen": 11.40, "okuma_yazma_bilen_mevzuniyeti_olmayan": 8.20, "ilk_okul": 39.30, "ilkogretim": 8.10, "ortaokul": 5.10, "lise": 14.50, "yuksekokul_ve_fakulte": 8.80, "yuksek_lisans": 0.70, "doktora": 0.20, "bilinmeyen": 3.50 },
+    { "yil": 2012, "cinsiyet": "Kadın", "toplam": 100.00, "okuma_yazma_bilmeyen": 10.00, "okuma_yazma_bilen_mevzuniyeti_olmayan": 9.10, "ilk_okul": 38.70, "ilkogretim": 8.70, "ortaokul": 5.00, "lise": 14.80, "yuksekokul_ve_fakulte": 9.50, "yuksek_lisans": 0.80, "doktora": 0.20, "bilinmeyen": 3.20 },
+    { "yil": 2013, "cinsiyet": "Kadın", "toplam": 100.00, "okuma_yazma_bilmeyen": 9.40, "okuma_yazma_bilen_mevzuniyeti_olmayan": 9.20, "ilk_okul": 37.70, "ilkogretim": 9.40, "ortaokul": 4.90, "lise": 14.40, "yuksekokul_ve_fakulte": 10.70, "yuksek_lisans": 0.90, "doktora": 0.30, "bilinmeyen": 3.20 },
+    { "yil": 2014, "cinsiyet": "Kadın", "toplam": 100.00, "okuma_yazma_bilmeyen": 9.20, "okuma_yazma_bilen_mevzuniyeti_olmayan": 9.00, "ilk_okul": 36.60, "ilkogretim": 9.30, "ortaokul": 6.10, "lise": 15.00, "yuksekokul_ve_fakulte": 11.70, "yuksek_lisans": 1.00, "doktora": 0.30, "bilinmeyen": 1.70 },
+    { "yil": 2015, "cinsiyet": "Kadın", "toplam": 100.00, "okuma_yazma_bilmeyen": 9.00, "okuma_yazma_bilen_mevzuniyeti_olmayan": 8.80, "ilk_okul": 35.90, "ilkogretim": 9.20, "ortaokul": 5.90, "lise": 15.60, "yuksekokul_ve_fakulte": 13.10, "yuksek_lisans": 1.10, "doktora": 0.30, "bilinmeyen": 1.10 },
+    { "yil": 2016, "cinsiyet": "Kadın", "toplam": 100.00, "okuma_yazma_bilmeyen": 8.50, "okuma_yazma_bilen_mevzuniyeti_olmayan": 8.50, "ilk_okul": 33.60, "ilkogretim": 10.30, "ortaokul": 7.00, "lise": 15.60, "yuksekokul_ve_fakulte": 14.10, "yuksek_lisans": 1.20, "doktora": 0.30, "bilinmeyen": 1.00 },
+    { "yil": 2017, "cinsiyet": "Kadın", "toplam": 100.00, "okuma_yazma_bilmeyen": 8.00, "okuma_yazma_bilen_mevzuniyeti_olmayan": 8.20, "ilk_okul": 32.70, "ilkogretim": 11.00, "ortaokul": 6.80, "lise": 15.90, "yuksekokul_ve_fakulte": 14.50, "yuksek_lisans": 1.60, "doktora": 0.30, "bilinmeyen": 0.90 },
+    { "yil": 2018, "cinsiyet": "Kadın", "toplam": 100.00, "okuma_yazma_bilmeyen": 7.50, "okuma_yazma_bilen_mevzuniyeti_olmayan": 7.90, "ilk_okul": 30.60, "ilkogretim": 12.10, "ortaokul": 7.20, "lise": 16.40, "yuksekokul_ve_fakulte": 15.30, "yuksek_lisans": 1.70, "doktora": 0.30, "bilinmeyen": 1.00 },
+    { "yil": 2019, "cinsiyet": "Kadın", "toplam": 100.00, "okuma_yazma_bilmeyen": 6.80, "okuma_yazma_bilen_mevzuniyeti_olmayan": 7.30, "ilk_okul": 29.10, "ilkogretim": 9.60, "ortaokul": 10.60, "lise": 17.30, "yuksekokul_ve_fakulte": 16.10, "yuksek_lisans": 1.80, "doktora": 0.30, "bilinmeyen": 1.00 },
+    { "yil": 2020, "cinsiyet": "Kadın", "toplam": 100.00, "okuma_yazma_bilmeyen": 6.40, "okuma_yazma_bilen_mevzuniyeti_olmayan": 7.10, "ilk_okul": 28.10, "ilkogretim": 9.10, "ortaokul": 11.30, "lise": 17.50, "yuksekokul_ve_fakulte": 17.10, "yuksek_lisans": 1.90, "doktora": 0.40, "bilinmeyen": 1.10 },
+    { "yil": 2021, "cinsiyet": "Kadın", "toplam": 100.00, "okuma_yazma_bilmeyen": 6.00, "okuma_yazma_bilen_mevzuniyeti_olmayan": 6.60, "ilk_okul": 27.60, "ilkogretim": 8.50, "ortaokul": 11.10, "lise": 18.30, "yuksekokul_ve_fakulte": 17.80, "yuksek_lisans": 2.40, "doktora": 0.40, "bilinmeyen": 1.30 },
+    { "yil": 2022, "cinsiyet": "Kadın", "toplam": 100.00, "okuma_yazma_bilmeyen": 5.70, "okuma_yazma_bilen_mevzuniyeti_olmayan": 6.30, "ilk_okul": 26.80, "ilkogretim": 8.30, "ortaokul": 11.10, "lise": 18.80, "yuksekokul_ve_fakulte": 18.70, "yuksek_lisans": 2.50, "doktora": 0.40, "bilinmeyen": 1.40 }];
+  </script>
+
+  <style>
+    .container {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      gap: 3rem;
+      padding: 3rem;
+    }
+
+    .sutun {
+      border: 1px solid #ccc;
+      width: auto;
+      height: 350px;
+    }
+
+    .chart {
+      padding: 0;
+      max-width: 380px;
+      margin: 35px auto;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div classs="chart" id="ke_2008_2022"></div>
+  </div>
+
+  <div class="container">
+    <div class="sutun">
+      <div classs="chart" id="kadin_2008"></div>
+    </div>
+    <div class="sutun">
+      <div classs="chart" id="erkek_2008"></div>
+    </div>
+
+    <div class="sutun">
+      <div classs="chart" id="kadin_2009"></div>
+    </div>
+    <div class="sutun">
+      <div classs="chart" id="erkek_2009"></div>
+    </div>
+
+    <div class="sutun">
+      <div classs="chart" id="kadin_2010"></div>
+    </div>
+    <div class="sutun">
+      <div classs="chart" id="erkek_2010"></div>
+    </div>
+
+    <div class="sutun">
+      <div classs="chart" id="kadin_2011"></div>
+    </div>
+    <div class="sutun">
+      <div classs="chart" id="erkek_2011"></div>
+    </div>
+
+    <div class="sutun">
+      <div classs="chart" id="kadin_2012"></div>
+    </div>
+    <div class="sutun">
+      <div classs="chart" id="erkek_2012"></div>
+    </div>
+
+    <div class="sutun">
+      <div classs="chart" id="kadin_2013"></div>
+    </div>
+    <div class="sutun">
+      <div classs="chart" id="erkek_2013"></div>
+    </div>
+
+    <div class="sutun">
+      <div classs="chart" id="kadin_2014"></div>
+    </div>
+    <div class="sutun">
+      <div classs="chart" id="erkek_2014"></div>
+    </div>
+
+    <div class="sutun">
+      <div classs="chart" id="kadin_2015"></div>
+    </div>
+    <div class="sutun">
+      <div classs="chart" id="erkek_2015"></div>
+    </div>
+
+    <div class="sutun">
+      <div classs="chart" id="kadin_2016"></div>
+    </div>
+    <div class="sutun">
+      <div classs="chart" id="erkek_2016"></div>
+    </div>
+
+    <div class="sutun">
+      <div classs="chart" id="kadin_2017"></div>
+    </div>
+    <div class="sutun">
+      <div classs="chart" id="erkek_2017"></div>
+    </div>
+
+    <div class="sutun">
+      <div classs="chart" id="kadin_2018"></div>
+    </div>
+    <div class="sutun">
+      <div classs="chart" id="erkek_2018"></div>
+    </div>
+
+    <div class="sutun">
+      <div classs="chart" id="kadin_2019"></div>
+    </div>
+    <div class="sutun">
+      <div classs="chart" id="erkek_2019"></div>
+    </div>
+
+    <div class="sutun">
+      <div classs="chart" id="kadin_2020"></div>
+    </div>
+    <div class="sutun">
+      <div classs="chart" id="erkek_2020"></div>
+    </div>
+
+    <div class="sutun">
+      <div classs="chart" id="kadin_2021"></div>
+    </div>
+    <div class="sutun">
+      <div classs="chart" id="erkek_2021"></div>
+    </div>
+
+    <div class="sutun">
+      <div classs="chart" id="kadin_2022"></div>
+    </div>
+    <div class="sutun">
+      <div classs="chart" id="erkek_2022"></div>
+    </div>
+  </div>
+
+  <script>
+    var data_2008_kadin = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Kadın' && n.yil === 2008;
+    });
+
+    //data içinden filtreleme yaptığımızda sonuç bize dizi olarak döndüğü için "0" sıfırıncı indisi aldık
+    data_2008_kadin = data_2008_kadin[0];
+    var kadin_2008_options = {
+      series: [
+        data_2008_kadin.okuma_yazma_bilmeyen,
+        data_2008_kadin.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2008_kadin.ilk_okul,
+        data_2008_kadin.ilkogretim,
+        data_2008_kadin.ortaokul,
+        data_2008_kadin.lise,
+        data_2008_kadin.yuksekokul_ve_fakulte,
+        data_2008_kadin.yuksek_lisans,
+        data_2008_kadin.doktora,
+        data_2008_kadin.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2008 Türkiye Kadın Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'pie',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+      dataLabels: {
+        enabled: true
+      },
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var kadin_2008_chart = new ApexCharts(document.querySelector("#kadin_2008"), kadin_2008_options);
+    kadin_2008_chart.render();
+
+
+    var data_2008_erkek = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Erkek' && n.yil === 2008;
+    });
+    data_2008_erkek = data_2008_erkek[0];
+    var erkek_2008_options = {
+      series: [
+        data_2008_erkek.okuma_yazma_bilmeyen,
+        data_2008_erkek.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2008_erkek.ilk_okul,
+        data_2008_erkek.ilkogretim,
+        data_2008_erkek.ortaokul,
+        data_2008_erkek.lise,
+        data_2008_erkek.yuksekokul_ve_fakulte,
+        data_2008_erkek.yuksek_lisans,
+        data_2008_erkek.doktora,
+        data_2008_erkek.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2008 Türkiye Erkek Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'pie',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+      dataLabels: {
+        enabled: true
+      },
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var erkek_2008_chart = new ApexCharts(document.querySelector("#erkek_2008"), erkek_2008_options);
+    erkek_2008_chart.render();
+  </script>
+
+  <script>
+    var data_2009_kadin = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Kadın' && n.yil === 2009;
+    });
+
+    //data içinden filtreleme yaptığımızda sonuç bize dizi olarak döndüğü için "0" sıfırıncı indisi aldık
+    data_2009_kadin = data_2009_kadin[0];
+    var kadin_2009_options = {
+      series: [{
+        data: [
+          data_2009_kadin.okuma_yazma_bilmeyen,
+          data_2009_kadin.okuma_yazma_bilen_mevzuniyeti_olmayan,
+          data_2009_kadin.ilk_okul,
+          data_2009_kadin.ilkogretim,
+          data_2009_kadin.ortaokul,
+          data_2009_kadin.lise,
+          data_2009_kadin.yuksekokul_ve_fakulte,
+          data_2009_kadin.yuksek_lisans,
+          data_2009_kadin.doktora,
+          data_2009_kadin.bilinmeyen,
+        ]
+      }],
+      title: {
+        text: '25 + Yaş 2009 Türkiye Kadın Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+
+
+      chart: {
+        type: 'bar',
+        height: 350,
+        width: 600
+      },
+      plotOptions: {
+        bar: {
+          borderRadius: 4,
+          borderRadiusApplication: 'end',
+          horizontal: true,
+        }
+      },
+      dataLabels: {
+        enabled: true
+      },
+      xaxis: {
+        categories: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen']
+      }
+    };
+    var kadin_2009_chart = new ApexCharts(document.querySelector("#kadin_2009"), kadin_2009_options);
+    kadin_2009_chart.render();
+
+
+    var data_2009_erkek = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Erkek' && n.yil === 2009;
+    });
+    data_2009_erkek = data_2009_erkek[0];
+    var erkek_2009_options = {
+      series: [{
+        data: [
+          data_2009_erkek.okuma_yazma_bilmeyen,
+          data_2009_erkek.okuma_yazma_bilen_mevzuniyeti_olmayan,
+          data_2009_erkek.ilk_okul,
+          data_2009_erkek.ilkogretim,
+          data_2009_erkek.ortaokul,
+          data_2009_erkek.lise,
+          data_2009_erkek.yuksekokul_ve_fakulte,
+          data_2009_erkek.yuksek_lisans,
+          data_2009_erkek.doktora,
+          data_2009_erkek.bilinmeyen,
+        ]
+      }],
+      title: {
+        text: '25 + Yaş 2009 Türkiye Erkek Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#800080'],
+      chart: {
+        width: 600,
+        type: 'pie',
+      },
+      chart: {
+        type: 'bar',
+        height: 350,
+        width: 600
+      },
+      plotOptions: {
+        bar: {
+          borderRadius: 4,
+          borderRadiusApplication: 'end',
+          horizontal: true,
+        }
+      },
+      dataLabels: {
+        enabled: true
+      },
+      xaxis: {
+        categories: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen']
+      }
+    };
+    var erkek_2009_chart = new ApexCharts(document.querySelector("#erkek_2009"), erkek_2009_options);
+    erkek_2009_chart.render();
+  </script>
+
+  <script>
+    var data_2010_kadin = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Kadın' && n.yil === 2010;
+    });
+
+    //data içinden filtreleme yaptığımızda sonuç bize dizi olarak döndüğü için "0" sıfırıncı indisi aldık
+    data_2010_kadin = data_2010_kadin[0];
+    var kadin_2010_options = {
+      series: [
+        data_2010_kadin.okuma_yazma_bilmeyen,
+        data_2010_kadin.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2010_kadin.ilk_okul,
+        data_2010_kadin.ilkogretim,
+        data_2010_kadin.ortaokul,
+        data_2010_kadin.lise,
+        data_2010_kadin.yuksekokul_ve_fakulte,
+        data_2010_kadin.yuksek_lisans,
+        data_2010_kadin.doktora,
+        data_2010_kadin.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2010 Türkiye Kadın Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'donut',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var kadin_2010_chart = new ApexCharts(document.querySelector("#kadin_2010"), kadin_2010_options);
+    kadin_2010_chart.render();
+
+
+    var data_2010_erkek = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Erkek' && n.yil === 2010;
+    });
+    data_2010_erkek = data_2010_erkek[0];
+    var erkek_2010_options = {
+      series: [
+        data_2010_erkek.okuma_yazma_bilmeyen,
+        data_2010_erkek.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2010_erkek.ilk_okul,
+        data_2010_erkek.ilkogretim,
+        data_2010_erkek.ortaokul,
+        data_2010_erkek.lise,
+        data_2010_erkek.yuksekokul_ve_fakulte,
+        data_2010_erkek.yuksek_lisans,
+        data_2010_erkek.doktora,
+        data_2010_erkek.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2010 Türkiye Erkek Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'donut',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var erkek_2010_chart = new ApexCharts(document.querySelector("#erkek_2010"), erkek_2010_options);
+    erkek_2010_chart.render();
+  </script>
+
+  <script>
+    var data_2011_kadin = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Kadın' && n.yil === 2011;
+    });
+
+    //data içinden filtreleme yaptığımızda sonuç bize dizi olarak döndüğü için "0" sıfırıncı indisi aldık
+    data_2011_kadin = data_2011_kadin[0];
+    var kadin_2011_options = {
+      series: [
+        data_2011_kadin.okuma_yazma_bilmeyen,
+        data_2011_kadin.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2011_kadin.ilk_okul,
+        data_2011_kadin.ilkogretim,
+        data_2011_kadin.ortaokul,
+        data_2011_kadin.lise,
+        data_2011_kadin.yuksekokul_ve_fakulte,
+        data_2011_kadin.yuksek_lisans,
+        data_2011_kadin.doktora,
+        data_2011_kadin.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2011 Türkiye Kadın Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'pie',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+      dataLabels: {
+        enabled: true
+      },
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var kadin_2011_chart = new ApexCharts(document.querySelector("#kadin_2011"), kadin_2011_options);
+    kadin_2011_chart.render();
+
+
+    var data_2011_erkek = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Erkek' && n.yil === 2011;
+    });
+    data_2011_erkek = data_2011_erkek[0];
+    var erkek_2011_options = {
+      series: [
+        data_2011_erkek.okuma_yazma_bilmeyen,
+        data_2011_erkek.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2011_erkek.ilk_okul,
+        data_2011_erkek.ilkogretim,
+        data_2011_erkek.ortaokul,
+        data_2011_erkek.lise,
+        data_2011_erkek.yuksekokul_ve_fakulte,
+        data_2011_erkek.yuksek_lisans,
+        data_2011_erkek.doktora,
+        data_2011_erkek.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2011 Türkiye Erkek Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'pie',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+      dataLabels: {
+        enabled: true
+      },
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var erkek_2011_chart = new ApexCharts(document.querySelector("#erkek_2011"), erkek_2011_options);
+    erkek_2011_chart.render();
+  </script>
+
+  <script>
+    var data_2012_kadin = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Kadın' && n.yil === 2012;
+    });
+
+    //data içinden filtreleme yaptığımızda sonuç bize dizi olarak döndüğü için "0" sıfırıncı indisi aldık
+    data_2012_kadin = data_2012_kadin[0];
+    var kadin_2012_options = {
+      series: [{
+        data: [
+          data_2012_kadin.okuma_yazma_bilmeyen,
+          data_2012_kadin.okuma_yazma_bilen_mevzuniyeti_olmayan,
+          data_2012_kadin.ilk_okul,
+          data_2012_kadin.ilkogretim,
+          data_2012_kadin.ortaokul,
+          data_2012_kadin.lise,
+          data_2012_kadin.yuksekokul_ve_fakulte,
+          data_2012_kadin.yuksek_lisans,
+          data_2012_kadin.doktora,
+          data_2012_kadin.bilinmeyen,
+        ]
+      }],
+      title: {
+        text: '25 + Yaş 2012 Türkiye Kadın Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+
+
+      chart: {
+        type: 'bar',
+        height: 350,
+        width: 600
+      },
+      plotOptions: {
+        bar: {
+          borderRadius: 4,
+          borderRadiusApplication: 'end',
+          horizontal: true,
+        }
+      },
+      dataLabels: {
+        enabled: true
+      },
+      xaxis: {
+        categories: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen']
+      }
+    };
+    var kadin_2012_chart = new ApexCharts(document.querySelector("#kadin_2012"), kadin_2012_options);
+    kadin_2012_chart.render();
+
+
+    var data_2012_erkek = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Erkek' && n.yil === 2012;
+    });
+    data_2012_erkek = data_2012_erkek[0];
+    var erkek_2012_options = {
+      series: [{
+        data: [
+          data_2012_erkek.okuma_yazma_bilmeyen,
+          data_2012_erkek.okuma_yazma_bilen_mevzuniyeti_olmayan,
+          data_2012_erkek.ilk_okul,
+          data_2012_erkek.ilkogretim,
+          data_2012_erkek.ortaokul,
+          data_2012_erkek.lise,
+          data_2012_erkek.yuksekokul_ve_fakulte,
+          data_2012_erkek.yuksek_lisans,
+          data_2012_erkek.doktora,
+          data_2012_erkek.bilinmeyen,
+        ]
+      }],
+      title: {
+        text: '25 + Yaş 2012 Türkiye Erkek Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#800080'],
+      chart: {
+        width: 600,
+        type: 'pie',
+      },
+      chart: {
+        type: 'bar',
+        height: 350,
+        width: 600
+      },
+      plotOptions: {
+        bar: {
+          borderRadius: 4,
+          borderRadiusApplication: 'end',
+          horizontal: true,
+        }
+      },
+      dataLabels: {
+        enabled: true
+      },
+      xaxis: {
+        categories: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen']
+      }
+    };
+    var erkek_2012_chart = new ApexCharts(document.querySelector("#erkek_2012"), erkek_2012_options);
+    erkek_2012_chart.render();
+  </script>
+
+  <script>
+    var data_2013_kadin = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Kadın' && n.yil === 2013;
+    });
+
+    //data içinden filtreleme yaptığımızda sonuç bize dizi olarak döndüğü için "0" sıfırıncı indisi aldık
+    data_2013_kadin = data_2013_kadin[0];
+    var kadin_2013_options = {
+      series: [
+        data_2013_kadin.okuma_yazma_bilmeyen,
+        data_2013_kadin.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2013_kadin.ilk_okul,
+        data_2013_kadin.ilkogretim,
+        data_2013_kadin.ortaokul,
+        data_2013_kadin.lise,
+        data_2013_kadin.yuksekokul_ve_fakulte,
+        data_2013_kadin.yuksek_lisans,
+        data_2013_kadin.doktora,
+        data_2013_kadin.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2013 Türkiye Kadın Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'donut',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var kadin_2013_chart = new ApexCharts(document.querySelector("#kadin_2013"), kadin_2013_options);
+    kadin_2013_chart.render();
+
+
+    var data_2013_erkek = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Erkek' && n.yil === 2013;
+    });
+    data_2013_erkek = data_2013_erkek[0];
+    var erkek_2013_options = {
+      series: [
+        data_2013_erkek.okuma_yazma_bilmeyen,
+        data_2013_erkek.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2013_erkek.ilk_okul,
+        data_2013_erkek.ilkogretim,
+        data_2013_erkek.ortaokul,
+        data_2013_erkek.lise,
+        data_2013_erkek.yuksekokul_ve_fakulte,
+        data_2013_erkek.yuksek_lisans,
+        data_2013_erkek.doktora,
+        data_2013_erkek.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2013 Türkiye Erkek Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'donut',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var erkek_2013_chart = new ApexCharts(document.querySelector("#erkek_2013"), erkek_2013_options);
+    erkek_2013_chart.render();
+  </script>
+
+  <script>
+    var data_2014_kadin = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Kadın' && n.yil === 2014;
+    });
+
+    //data içinden filtreleme yaptığımızda sonuç bize dizi olarak döndüğü için "0" sıfırıncı indisi aldık
+    data_2014_kadin = data_2014_kadin[0];
+    var kadin_2014_options = {
+      series: [
+        data_2014_kadin.okuma_yazma_bilmeyen,
+        data_2014_kadin.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2014_kadin.ilk_okul,
+        data_2014_kadin.ilkogretim,
+        data_2014_kadin.ortaokul,
+        data_2014_kadin.lise,
+        data_2014_kadin.yuksekokul_ve_fakulte,
+        data_2014_kadin.yuksek_lisans,
+        data_2014_kadin.doktora,
+        data_2014_kadin.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2014 Türkiye Kadın Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'pie',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+      dataLabels: {
+        enabled: true
+      },
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var kadin_2014_chart = new ApexCharts(document.querySelector("#kadin_2014"), kadin_2014_options);
+    kadin_2014_chart.render();
+
+
+    var data_2014_erkek = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Erkek' && n.yil === 2014;
+    });
+    data_2014_erkek = data_2014_erkek[0];
+    var erkek_2014_options = {
+      series: [
+        data_2014_erkek.okuma_yazma_bilmeyen,
+        data_2014_erkek.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2014_erkek.ilk_okul,
+        data_2014_erkek.ilkogretim,
+        data_2014_erkek.ortaokul,
+        data_2014_erkek.lise,
+        data_2014_erkek.yuksekokul_ve_fakulte,
+        data_2014_erkek.yuksek_lisans,
+        data_2014_erkek.doktora,
+        data_2014_erkek.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2014 Türkiye Erkek Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'pie',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+      dataLabels: {
+        enabled: true
+      },
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var erkek_2014_chart = new ApexCharts(document.querySelector("#erkek_2014"), erkek_2014_options);
+    erkek_2014_chart.render();
+  </script>
+
+  <script>
+    var data_2015_kadin = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Kadın' && n.yil === 2015;
+    });
+
+    //data içinden filtreleme yaptığımızda sonuç bize dizi olarak döndüğü için "0" sıfırıncı indisi aldık
+    data_2015_kadin = data_2015_kadin[0];
+    var kadin_2015_options = {
+      series: [{
+        data: [
+          data_2015_kadin.okuma_yazma_bilmeyen,
+          data_2015_kadin.okuma_yazma_bilen_mevzuniyeti_olmayan,
+          data_2015_kadin.ilk_okul,
+          data_2015_kadin.ilkogretim,
+          data_2015_kadin.ortaokul,
+          data_2015_kadin.lise,
+          data_2015_kadin.yuksekokul_ve_fakulte,
+          data_2015_kadin.yuksek_lisans,
+          data_2015_kadin.doktora,
+          data_2015_kadin.bilinmeyen,
+        ]
+      }],
+      title: {
+        text: '25 + Yaş 2015 Türkiye Kadın Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+
+
+      chart: {
+        type: 'bar',
+        height: 350,
+        width: 600
+      },
+      plotOptions: {
+        bar: {
+          borderRadius: 4,
+          borderRadiusApplication: 'end',
+          horizontal: true,
+        }
+      },
+      dataLabels: {
+        enabled: true
+      },
+      xaxis: {
+        categories: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen']
+      }
+    };
+    var kadin_2015_chart = new ApexCharts(document.querySelector("#kadin_2015"), kadin_2015_options);
+    kadin_2015_chart.render();
+
+
+    var data_2015_erkek = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Erkek' && n.yil === 2015;
+    });
+    data_2015_erkek = data_2015_erkek[0];
+    var erkek_2015_options = {
+      series: [{
+        data: [
+          data_2015_erkek.okuma_yazma_bilmeyen,
+          data_2015_erkek.okuma_yazma_bilen_mevzuniyeti_olmayan,
+          data_2015_erkek.ilk_okul,
+          data_2015_erkek.ilkogretim,
+          data_2015_erkek.ortaokul,
+          data_2015_erkek.lise,
+          data_2015_erkek.yuksekokul_ve_fakulte,
+          data_2015_erkek.yuksek_lisans,
+          data_2015_erkek.doktora,
+          data_2015_erkek.bilinmeyen,
+        ]
+      }],
+      title: {
+        text: '25 + Yaş 2015 Türkiye Erkek Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#800080'],
+      chart: {
+        width: 600,
+        type: 'pie',
+      },
+      chart: {
+        type: 'bar',
+        height: 350,
+        width: 600
+      },
+      plotOptions: {
+        bar: {
+          borderRadius: 4,
+          borderRadiusApplication: 'end',
+          horizontal: true,
+        }
+      },
+      dataLabels: {
+        enabled: true
+      },
+      xaxis: {
+        categories: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen']
+      }
+    };
+    var erkek_2015_chart = new ApexCharts(document.querySelector("#erkek_2015"), erkek_2015_options);
+    erkek_2015_chart.render();
+  </script>
+
+  <script>
+    var data_2016_kadin = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Kadın' && n.yil === 2016;
+    });
+
+    //data içinden filtreleme yaptığımızda sonuç bize dizi olarak döndüğü için "0" sıfırıncı indisi aldık
+    data_2016_kadin = data_2016_kadin[0];
+    var kadin_2016_options = {
+      series: [
+        data_2016_kadin.okuma_yazma_bilmeyen,
+        data_2016_kadin.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2016_kadin.ilk_okul,
+        data_2016_kadin.ilkogretim,
+        data_2016_kadin.ortaokul,
+        data_2016_kadin.lise,
+        data_2016_kadin.yuksekokul_ve_fakulte,
+        data_2016_kadin.yuksek_lisans,
+        data_2016_kadin.doktora,
+        data_2016_kadin.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2016 Türkiye Kadın Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'donut',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var kadin_2016_chart = new ApexCharts(document.querySelector("#kadin_2016"), kadin_2016_options);
+    kadin_2016_chart.render();
+
+
+    var data_2016_erkek = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Erkek' && n.yil === 2016;
+    });
+    data_2016_erkek = data_2016_erkek[0];
+    var erkek_2016_options = {
+      series: [
+        data_2016_erkek.okuma_yazma_bilmeyen,
+        data_2016_erkek.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2016_erkek.ilk_okul,
+        data_2016_erkek.ilkogretim,
+        data_2016_erkek.ortaokul,
+        data_2016_erkek.lise,
+        data_2016_erkek.yuksekokul_ve_fakulte,
+        data_2016_erkek.yuksek_lisans,
+        data_2016_erkek.doktora,
+        data_2016_erkek.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2016 Türkiye Erkek Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'donut',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var erkek_2016_chart = new ApexCharts(document.querySelector("#erkek_2016"), erkek_2016_options);
+    erkek_2016_chart.render();
+  </script>
+
+  <script>
+    var data_2017_kadin = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Kadın' && n.yil === 2017;
+    });
+
+    //data içinden filtreleme yaptığımızda sonuç bize dizi olarak döndüğü için "0" sıfırıncı indisi aldık
+    data_2017_kadin = data_2017_kadin[0];
+    var kadin_2017_options = {
+      series: [
+        data_2017_kadin.okuma_yazma_bilmeyen,
+        data_2017_kadin.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2017_kadin.ilk_okul,
+        data_2017_kadin.ilkogretim,
+        data_2017_kadin.ortaokul,
+        data_2017_kadin.lise,
+        data_2017_kadin.yuksekokul_ve_fakulte,
+        data_2017_kadin.yuksek_lisans,
+        data_2017_kadin.doktora,
+        data_2017_kadin.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2017 Türkiye Kadın Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'pie',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+      dataLabels: {
+        enabled: true
+      },
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var kadin_2017_chart = new ApexCharts(document.querySelector("#kadin_2017"), kadin_2017_options);
+    kadin_2017_chart.render();
+
+
+    var data_2017_erkek = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Erkek' && n.yil === 2017;
+    });
+    data_2017_erkek = data_2017_erkek[0];
+    var erkek_2017_options = {
+      series: [
+        data_2017_erkek.okuma_yazma_bilmeyen,
+        data_2017_erkek.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2017_erkek.ilk_okul,
+        data_2017_erkek.ilkogretim,
+        data_2017_erkek.ortaokul,
+        data_2017_erkek.lise,
+        data_2017_erkek.yuksekokul_ve_fakulte,
+        data_2017_erkek.yuksek_lisans,
+        data_2017_erkek.doktora,
+        data_2017_erkek.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2017 Türkiye Erkek Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'pie',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+      dataLabels: {
+        enabled: true
+      },
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var erkek_2017_chart = new ApexCharts(document.querySelector("#erkek_2017"), erkek_2017_options);
+    erkek_2017_chart.render();
+  </script>
+
+  <script>
+    var data_2018_kadin = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Kadın' && n.yil === 2018;
+    });
+
+    //data içinden filtreleme yaptığımızda sonuç bize dizi olarak döndüğü için "0" sıfırıncı indisi aldık
+    data_2018_kadin = data_2018_kadin[0];
+    var kadin_2018_options = {
+      series: [{
+        data: [
+          data_2018_kadin.okuma_yazma_bilmeyen,
+          data_2018_kadin.okuma_yazma_bilen_mevzuniyeti_olmayan,
+          data_2018_kadin.ilk_okul,
+          data_2018_kadin.ilkogretim,
+          data_2018_kadin.ortaokul,
+          data_2018_kadin.lise,
+          data_2018_kadin.yuksekokul_ve_fakulte,
+          data_2018_kadin.yuksek_lisans,
+          data_2018_kadin.doktora,
+          data_2018_kadin.bilinmeyen,
+        ]
+      }],
+      title: {
+        text: '25 + Yaş 2018 Türkiye Kadın Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+
+
+      chart: {
+        type: 'bar',
+        height: 350,
+        width: 600
+      },
+      plotOptions: {
+        bar: {
+          borderRadius: 4,
+          borderRadiusApplication: 'end',
+          horizontal: true,
+        }
+      },
+      dataLabels: {
+        enabled: true
+      },
+      xaxis: {
+        categories: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen']
+      }
+    };
+    var kadin_2018_chart = new ApexCharts(document.querySelector("#kadin_2018"), kadin_2018_options);
+    kadin_2018_chart.render();
+
+
+    var data_2018_erkek = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Erkek' && n.yil === 2018;
+    });
+    data_2018_erkek = data_2018_erkek[0];
+    var erkek_2018_options = {
+      series: [{
+        data: [
+          data_2018_erkek.okuma_yazma_bilmeyen,
+          data_2018_erkek.okuma_yazma_bilen_mevzuniyeti_olmayan,
+          data_2018_erkek.ilk_okul,
+          data_2018_erkek.ilkogretim,
+          data_2018_erkek.ortaokul,
+          data_2018_erkek.lise,
+          data_2018_erkek.yuksekokul_ve_fakulte,
+          data_2018_erkek.yuksek_lisans,
+          data_2018_erkek.doktora,
+          data_2018_erkek.bilinmeyen,
+        ]
+      }],
+      title: {
+        text: '25 + Yaş 2018 Türkiye Erkek Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#800080'],
+      chart: {
+        width: 600,
+        type: 'pie',
+      },
+      chart: {
+        type: 'bar',
+        height: 350,
+        width: 600
+      },
+      plotOptions: {
+        bar: {
+          borderRadius: 4,
+          borderRadiusApplication: 'end',
+          horizontal: true,
+        }
+      },
+      dataLabels: {
+        enabled: true
+      },
+      xaxis: {
+        categories: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen']
+      }
+    };
+    var erkek_2018_chart = new ApexCharts(document.querySelector("#erkek_2018"), erkek_2018_options);
+    erkek_2018_chart.render();
+  </script>
+
+  <script>
+    var data_2019_kadin = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Kadın' && n.yil === 2019;
+    });
+
+    //data içinden filtreleme yaptığımızda sonuç bize dizi olarak döndüğü için "0" sıfırıncı indisi aldık
+    data_2019_kadin = data_2019_kadin[0];
+    var kadin_2019_options = {
+      series: [
+        data_2019_kadin.okuma_yazma_bilmeyen,
+        data_2019_kadin.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2019_kadin.ilk_okul,
+        data_2019_kadin.ilkogretim,
+        data_2019_kadin.ortaokul,
+        data_2019_kadin.lise,
+        data_2019_kadin.yuksekokul_ve_fakulte,
+        data_2019_kadin.yuksek_lisans,
+        data_2019_kadin.doktora,
+        data_2019_kadin.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2019 Türkiye Kadın Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'donut',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var kadin_2019_chart = new ApexCharts(document.querySelector("#kadin_2019"), kadin_2019_options);
+    kadin_2019_chart.render();
+
+
+    var data_2019_erkek = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Erkek' && n.yil === 2019;
+    });
+    data_2019_erkek = data_2019_erkek[0];
+    var erkek_2019_options = {
+      series: [
+        data_2019_erkek.okuma_yazma_bilmeyen,
+        data_2019_erkek.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2019_erkek.ilk_okul,
+        data_2019_erkek.ilkogretim,
+        data_2019_erkek.ortaokul,
+        data_2019_erkek.lise,
+        data_2019_erkek.yuksekokul_ve_fakulte,
+        data_2019_erkek.yuksek_lisans,
+        data_2019_erkek.doktora,
+        data_2019_erkek.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2019 Türkiye Erkek Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'donut',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var erkek_2019_chart = new ApexCharts(document.querySelector("#erkek_2019"), erkek_2019_options);
+    erkek_2019_chart.render();
+  </script>
+
+  <script>
+    var data_2020_kadin = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Kadın' && n.yil === 2020;
+    });
+
+    //data içinden filtreleme yaptığımızda sonuç bize dizi olarak döndüğü için "0" sıfırıncı indisi aldık
+    data_2020_kadin = data_2020_kadin[0];
+    var kadin_2020_options = {
+      series: [
+        data_2020_kadin.okuma_yazma_bilmeyen,
+        data_2020_kadin.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2020_kadin.ilk_okul,
+        data_2020_kadin.ilkogretim,
+        data_2020_kadin.ortaokul,
+        data_2020_kadin.lise,
+        data_2020_kadin.yuksekokul_ve_fakulte,
+        data_2020_kadin.yuksek_lisans,
+        data_2020_kadin.doktora,
+        data_2020_kadin.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2020 Türkiye Kadın Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'pie',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+      dataLabels: {
+        enabled: true
+      },
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var kadin_2020_chart = new ApexCharts(document.querySelector("#kadin_2020"), kadin_2020_options);
+    kadin_2020_chart.render();
+
+
+    var data_2020_erkek = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Erkek' && n.yil === 2020;
+    });
+    data_2020_erkek = data_2020_erkek[0];
+    var erkek_2020_options = {
+      series: [
+        data_2020_erkek.okuma_yazma_bilmeyen,
+        data_2020_erkek.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2020_erkek.ilk_okul,
+        data_2020_erkek.ilkogretim,
+        data_2020_erkek.ortaokul,
+        data_2020_erkek.lise,
+        data_2020_erkek.yuksekokul_ve_fakulte,
+        data_2020_erkek.yuksek_lisans,
+        data_2020_erkek.doktora,
+        data_2020_erkek.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2020 Türkiye Erkek Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'pie',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+      dataLabels: {
+        enabled: true
+      },
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var erkek_2020_chart = new ApexCharts(document.querySelector("#erkek_2020"), erkek_2020_options);
+    erkek_2020_chart.render();
+  </script>
+
+  <script>
+    var data_2021_kadin = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Kadın' && n.yil === 2021;
+    });
+
+    //data içinden filtreleme yaptığımızda sonuç bize dizi olarak döndüğü için "0" sıfırıncı indisi aldık
+    data_2021_kadin = data_2021_kadin[0];
+    var kadin_2021_options = {
+      series: [{
+        data: [
+          data_2021_kadin.okuma_yazma_bilmeyen,
+          data_2021_kadin.okuma_yazma_bilen_mevzuniyeti_olmayan,
+          data_2021_kadin.ilk_okul,
+          data_2021_kadin.ilkogretim,
+          data_2021_kadin.ortaokul,
+          data_2021_kadin.lise,
+          data_2021_kadin.yuksekokul_ve_fakulte,
+          data_2021_kadin.yuksek_lisans,
+          data_2021_kadin.doktora,
+          data_2021_kadin.bilinmeyen,
+        ]
+      }],
+      title: {
+        text: '25 + Yaş 2021 Türkiye Kadın Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+
+
+      chart: {
+        type: 'bar',
+        height: 350,
+        width: 600
+      },
+      plotOptions: {
+        bar: {
+          borderRadius: 4,
+          borderRadiusApplication: 'end',
+          horizontal: true,
+        }
+      },
+      dataLabels: {
+        enabled: true
+      },
+      xaxis: {
+        categories: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen']
+      }
+    };
+    var kadin_2021_chart = new ApexCharts(document.querySelector("#kadin_2021"), kadin_2021_options);
+    kadin_2021_chart.render();
+
+
+    var data_2021_erkek = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Erkek' && n.yil === 2021;
+    });
+    data_2021_erkek = data_2021_erkek[0];
+    var erkek_2021_options = {
+      series: [{
+        data: [
+          data_2021_erkek.okuma_yazma_bilmeyen,
+          data_2021_erkek.okuma_yazma_bilen_mevzuniyeti_olmayan,
+          data_2021_erkek.ilk_okul,
+          data_2021_erkek.ilkogretim,
+          data_2021_erkek.ortaokul,
+          data_2021_erkek.lise,
+          data_2021_erkek.yuksekokul_ve_fakulte,
+          data_2021_erkek.yuksek_lisans,
+          data_2021_erkek.doktora,
+          data_2021_erkek.bilinmeyen,
+        ]
+      }],
+      title: {
+        text: '25 + Yaş 2021 Türkiye Erkek Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#800080'],
+      chart: {
+        width: 600,
+        type: 'pie',
+      },
+      chart: {
+        type: 'bar',
+        height: 350,
+        width: 600
+      },
+      plotOptions: {
+        bar: {
+          borderRadius: 4,
+          borderRadiusApplication: 'end',
+          horizontal: true,
+        }
+      },
+      dataLabels: {
+        enabled: true
+      },
+      xaxis: {
+        categories: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen']
+      }
+    };
+    var erkek_2021_chart = new ApexCharts(document.querySelector("#erkek_2021"), erkek_2021_options);
+    erkek_2021_chart.render();
+  </script>
+
+  <script>
+    var data_2022_kadin = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Kadın' && n.yil === 2022;
+    });
+
+    //data içinden filtreleme yaptığımızda sonuç bize dizi olarak döndüğü için "0" sıfırıncı indisi aldık
+    data_2022_kadin = data_2022_kadin[0];
+    var kadin_2022_options = {
+      series: [
+        data_2022_kadin.okuma_yazma_bilmeyen,
+        data_2022_kadin.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2022_kadin.ilk_okul,
+        data_2022_kadin.ilkogretim,
+        data_2022_kadin.ortaokul,
+        data_2022_kadin.lise,
+        data_2022_kadin.yuksekokul_ve_fakulte,
+        data_2022_kadin.yuksek_lisans,
+        data_2022_kadin.doktora,
+        data_2022_kadin.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2022 Türkiye Kadın Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'donut',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var kadin_2022_chart = new ApexCharts(document.querySelector("#kadin_2022"), kadin_2022_options);
+    kadin_2022_chart.render();
+
+
+    var data_2022_erkek = $(data).filter(function (i, n) {
+      return n.cinsiyet === 'Erkek' && n.yil === 2022;
+    });
+    data_2022_erkek = data_2022_erkek[0];
+    var erkek_2022_options = {
+      series: [
+        data_2022_erkek.okuma_yazma_bilmeyen,
+        data_2022_erkek.okuma_yazma_bilen_mevzuniyeti_olmayan,
+        data_2022_erkek.ilk_okul,
+        data_2022_erkek.ilkogretim,
+        data_2022_erkek.ortaokul,
+        data_2022_erkek.lise,
+        data_2022_erkek.yuksekokul_ve_fakulte,
+        data_2022_erkek.yuksek_lisans,
+        data_2022_erkek.doktora,
+        data_2022_erkek.bilinmeyen,
+      ],
+      title: {
+        text: '25 + Yaş 2022 Türkiye Erkek Nüfusunun Eğitim Göstergesi',
+        align: 'center'
+      },
+      colors: ['#F44336', '#E91E63', '#9C27B0', '#5B57B9', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'],
+      chart: {
+        width: 600,
+        type: 'donut',
+      },
+      labels: ['Okuma Yazma Bilmeyen', 'Okuma Yazma Bilen Mevzuniyeti Olmayan', 'İlkokul', 'İlköğretim', 'Ortaokul', 'Lise', 'Yüksek Okul ve Fakülte', 'Yüksek Lisans', 'Doktora', 'Bilinmeyen'],
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    };
+    var erkek_2022_chart = new ApexCharts(document.querySelector("#erkek_2022"), erkek_2022_options);
+    erkek_2022_chart.render();
+  </script>
+
+  <script>
+
+    var options = {
+      series: [{
+        name: 'Kadın',
+        data: [
+          data_2008_kadin.lise,
+          data_2009_kadin.lise,
+          data_2010_kadin.lise,
+          data_2011_kadin.lise,
+          data_2012_kadin.lise,
+          data_2013_kadin.lise,
+          data_2014_kadin.lise,
+          data_2015_kadin.lise,
+          data_2016_kadin.lise,
+          data_2017_kadin.lise,
+          data_2018_kadin.lise,
+          data_2019_kadin.lise,
+          data_2020_kadin.lise,
+          data_2021_kadin.lise,
+          data_2022_kadin.lise]
+      }, {
+        name: 'Erkek',
+        data: [
+          data_2008_erkek.lise,
+          data_2009_erkek.lise,
+          data_2010_erkek.lise,
+          data_2011_erkek.lise,
+          data_2012_erkek.lise,
+          data_2013_erkek.lise,
+          data_2014_erkek.lise,
+          data_2015_erkek.lise,
+          data_2016_erkek.lise,
+          data_2017_erkek.lise,
+          data_2018_erkek.lise,
+          data_2019_erkek.lise,
+          data_2020_erkek.lise,
+          data_2021_erkek.lise,
+          data_2022_erkek.lise]
+      }],
+      chart: {
+        type: 'bar',
+        height: 350,
+        width: 900
+      },
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          columnWidth: '55%',
+          endingShape: 'rounded'
+        },
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        show: true,
+        width: 2,
+        colors: ['transparent']
+      },
+      xaxis: {
+        categories: ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'],
+      },
+      yaxis: {
+        title: {
+          text: 'Lise Mevzunları'
+        }
+      },
+      fill: {
+        opacity: 1
+      },
+      tooltip: {
+        y: {
+          formatter: function (val) {
+            return "% " + val
+          }
+        }
+      }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#ke_2008_2022"), options);
+    chart.render();
+  </script>
+
+</body>
+
+</html>
